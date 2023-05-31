@@ -1,0 +1,10 @@
+{
+    "name": "tpms_monitor",
+    "version": "1.0.0",
+    "description": "TPMS Monitor Plugin for Ford Vehicles",
+    "author": "Your Name",
+    "main": "tpms_monitor_app",
+    "files": [
+        "tpms_monitor.c"
+    ]
+}
