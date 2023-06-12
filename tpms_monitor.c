@@ -11,6 +11,20 @@ typedef struct {
     uint16_t model_year;
 } TpmsMonitorState;
 
+void subghz_protocol_common_load(SubGhzProtocolCommon* instance, const SubGhzProtocolCommonEncoder* encoder) {
+    furi_assert(instance);
+    furi_assert(encoder);
+
+    instance->common_encoder = encoder;
+
+    // Set modulation settings
+    instance->modulation = FuriHalSubGhzModulationFSK;
+    instance->real_frequency = 433.92f; // Carrier frequency
+    instance->real_bitrate = 125.0f; // Data rate
+    instance->real_frequency_deviation = 10.0f; // Frequency deviation
+    instance->real_packet_duration = 1000.0f / instance->real_bitrate; // Packet duration
+}
+
 // The main function for the plugin
 int32_t tpms_monitor_app(void* p) {
     // Allocate and initialize the plugin state
